@@ -25,4 +25,9 @@ class Product extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    /*public function  evaluation_products()
+    {
+        return $this->morphMany('App\Evaluation_Product', 'product');
+    }*/
 }

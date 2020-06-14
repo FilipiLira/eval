@@ -40,4 +40,9 @@ class User extends Authenticatable
     public function product(){
         return $this->hasMany(Product::class);
     }
+
+    /*public function  evaluation_products()
+    {
+        return $this->morphMany('App\Evaluation_Product', 'user');
+    }*/
 }

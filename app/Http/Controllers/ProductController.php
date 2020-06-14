@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Services\ImageRepository;
+use App\Http\Services\EvaluationRepository;
 
 class ProductController extends Controller
 {
@@ -14,17 +15,25 @@ class ProductController extends Controller
         return view('forms.productForm');
     }
 
-    public function create(Request $req, ImageRepository $imgsave){
-        $userLogged = Auth::user()->id;
-        $user = \App\User::find($userLogged);
+    public function create(Request $req, ImageRepository $imgSave, EvaluationRepository $mkEvaluation){
+        $userLogged = Auth::user()->id; // id do usuário logado
+        $user = \App\User::find($userLogged); // recuperando dados do user
 
-        $img = $imgsave->saveImage($req);
+        $img = $imgSave->saveImage($req); // salvando imagem do produto
         
-        $user->product()->create([
+        $user->product()->create([ // salvando produtos
             'name' => $req->name,
-            'description' => $req->description,
-            'image' => $imgsave->saveImage($req)
+            'description' => $req->comment,
+            'image' => $imgSave->saveImage($req)
         ]);
+
+        $produtosId = \App\Product::all()->last()->id; // pegando id do ultimo produto incerido
+
+
+        $mkEvaluation->makeEvaluation($userLogged, $produtosId, $req->evaluation, $req->comment);
+
+        // var_dump($produtosId);
+        // die;
 
         $allProductsUser = \App\Product::where('user_id', $userLogged)->get();
 

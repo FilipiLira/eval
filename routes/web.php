@@ -28,6 +28,8 @@ Route::get('eval/google/callback', 'LoginController@handleProviderCallbackGoogle
 
 Auth::routes();
 
+Route::get('/', 'PageIndexController@index')->name('/');
+
 Route::prefix('home')->name('home.')->group(function(){
 
     Route::get('/', 'HomeController@index')->name('home');

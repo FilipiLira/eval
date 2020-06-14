@@ -18,13 +18,13 @@ class CreateEvaluationProductTable extends Migration
             $table->unsignedBigInteger('evaluation_id');
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('comments_id');
+            $table->unsignedBigInteger('comment_id');
             $table->timestamps();
 
             $table->foreign('evaluation_id')->references('id')->on('evaluations');
             $table->foreign('product_id')->references('id')->on('products');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('comments_id')->references('id')->on('comments');
+            $table->foreign('comment_id')->references('id')->on('comments');
         });
     }
 

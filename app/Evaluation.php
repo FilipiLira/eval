@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Evaluation extends Model
 {
-    use Notifiable;
+    //use Notifiable;
 
     protected $fillable = [
         'evaluKey'
@@ -20,7 +20,12 @@ class Evaluation extends Model
         
     ];
 
-    public function evaluation_product(){
+    /*public function evaluation_product(){
         return $this->hasMany(Evaluation_Product::class);
-    }
+    }*/
+
+    /*public function  evaluation_products()
+    {
+        return $this->morphMany('App\Evaluation_Product', 'evaluation');
+    }*/
 }

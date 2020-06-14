@@ -16,8 +16,8 @@
                 </div>
                 <div class="input-group">
                     <div class="form-group">
-                        <label for="description">Descrição</label>
-                        <textarea id="description" class="form-control" name="description" rows="10" cols="100"></textarea>
+                        <label for="comment">Descrição</label>
+                        <textarea id="comment" class="form-control" name="comment" rows="10" cols="100"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
