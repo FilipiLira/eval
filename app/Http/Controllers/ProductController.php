@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Services\ImageRepository;
 use App\Http\Services\EvaluationRepository;
+use App\Http\Services\ProductRepository;
 
 class ProductController extends Controller
 {
@@ -55,5 +56,15 @@ class ProductController extends Controller
         //$url = Storage::get($imgName);
         //return $url;
         
+    }
+
+    public function evaluationProductForm($productId, ProductRepository $product, EvaluationRepository $evaluation){
+
+        $productAtributs =  $product->oneProduct($productId);
+        $allEvaluationsProduct = $evaluation->allEvaluationsProduct($productId);
+
+        //dd($allEvaluationsProduct);
+        //die;
+        return view('forms.evaluationForm', compact('productAtributs', 'allEvaluationsProduct'));
     }
 }

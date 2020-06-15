@@ -1,0 +1,7 @@
+.product-row{
+    transition: all .2s ease-in-out;
+}
+
+.product-row:hover{
+    box-shadow: 2px 1px 10px rgb(212, 211, 211);
+}

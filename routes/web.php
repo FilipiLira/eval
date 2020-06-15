@@ -41,3 +41,5 @@ Route::prefix('home')->name('home.')->group(function(){
     Route::get('/productImg/{imgName}', 'ProductController@imgReq')->name('productImg');
 });
 
+Route::get('/evaluationProduct/{productId}', 'ProductController@evaluationProductForm')->name('evaluationProduct');
+Route::post('/evaluationProduct/create', 'Evaluation_ProductController@evaluationProductCreate')->name('evaluationProduct.create');

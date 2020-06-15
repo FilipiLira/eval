@@ -7,13 +7,18 @@ class ProductRepository{
     
     public function allProducts(){
         return \App\Evaluation_Product::join('users', 'evaluation_product.user_id', '=', 'users.id')
-                               ->join('evaluations', 'evaluation_product.user_id', '=', 'evaluations.id')
+                               ->join('evaluations', 'evaluation_product.evaluation_id', '=', 'evaluations.id')
                                ->join('products', 'evaluation_product.product_id', '=', 'products.id')
-                               ->join('comments', 'evaluation_product.user_id', '=', 'comments.id')
+                               ->join('comments', 'evaluation_product.comment_id', '=', 'comments.id')
                                ->where('evaluation_product.id', '>', '0')->paginate(7);
 
         //dd($a);
         //die;
+    }
+
+    public function oneProduct($productId){
+        
+        return \App\Product::find($productId);
     }
 }
 

@@ -72,6 +72,18 @@ class EvaluationRepository{
 
         return redirect()->route('/');
     } 
+
+    public function allEvaluationsProduct($productId){
+        return \App\Evaluation_Product::join('users', 'evaluation_product.user_id', '=', 'users.id')
+                               ->join('evaluations', 'evaluation_product.evaluation_id', '=', 'evaluations.id')
+                               ->join('products', 'evaluation_product.product_id', '=', 'products.id')
+                               ->join('comments', 'evaluation_product.comment_id', '=', 'comments.id')
+                               ->select('users.*', 'evaluation_product.id', 'comments.content') // trazendo apenas esses campos especificados no select
+                               ->where('evaluation_product.product_id', $productId)->paginate(4);
+
+        //dd($a);
+        //die;
+    }
 }
 
 
