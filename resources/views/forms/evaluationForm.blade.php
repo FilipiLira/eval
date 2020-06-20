@@ -12,11 +12,11 @@
                 @csrf
                 <div class="d-flex flex-row">
                     <div class="col-2">
-                        <img src="{{route("home.productImg", $productAtributs->image)}}" style="height:100px" alt="..." class="img-rounded">
+                        <img src="{{route("home.productImg", $product->image)}}" style="height:100px" alt="..." class="img-rounded">
                     </div>
                     <div class="col-8">
-                        <h2>{{$productAtributs->name}}</h2>
-                        <input id="product" type="hidden" name="product" value="{{$productAtributs->id}}">
+                        <h2>{{$product->name}}</h2>
+                        <input id="product" type="hidden" name="product" value="{{$product->id}}">
                     </div>
                 </div>
                 <div class="input-group">

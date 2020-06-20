@@ -59,12 +59,12 @@ function evaluationIndex(){
 
     for(let i = 0; i < totalProducts; i++){
         let evaluation = $(`#avaliation${i}`).attr('avaliation')
-
+console.log(evaluation)
         let stars = ''
 
         evaluationPNumber = 0
 
-        evaluation == 'ONE' ? evaluationPNumber = 1 : evaluation == 'TWO' ? evaluationPNumber = 2 : evaluation == 'THREE' ? evaluationPNumber = 3 : evaluation == 'FOUR' ? evaluationPNumber = 4 : evaluationPNumber = 5
+        /*evaluation == 'ONE' ? evaluationPNumber = 1 : evaluation == 'TWO' ? evaluationPNumber = 2 : evaluation == 'THREE' ? evaluationPNumber = 3 : evaluation == 'FOUR' ? evaluationPNumber = 4 : evaluationPNumber = 5
 
         for(let j = 0; j < 5; j++){
 
@@ -79,9 +79,27 @@ function evaluationIndex(){
             }
         }
 
-        $(`#avaliation${i}`).html(stars)
+        $(`#avaliation${i}`).html(stars)*/
     }
 }
 $(document).ready(()=>{
     evaluationIndex()
+})
+
+/*function textareaEdit(){
+    bkLib.onDomLoaded(function() { nicEditors.allTextAreas() }); // convert all text areas to rich text editor on that page
+
+        bkLib.onDomLoaded(function() {
+             new nicEditor().panelInstance('topic_description');
+        }); // convert text area with id area1 to rich text editor.
+
+        bkLib.onDomLoaded(function() {
+             new nicEditor({fullPanel : true}).panelInstance('area2');
+        }); // convert text area with id area2 to rich text editor with full panel.
+}
+textareaEdit()*/
+
+//tooltip para os links
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
 })

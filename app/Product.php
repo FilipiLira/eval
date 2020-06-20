@@ -14,14 +14,6 @@ class Product extends Model
         'name', 'description', 'image'
     ];
 
-    protected $hidden = [
-        'password'
-    ];
-
-    protected $casts = [
-        
-    ];
-
     public function user(){
         return $this->belongsTo(User::class);
     }

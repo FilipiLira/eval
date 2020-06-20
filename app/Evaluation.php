@@ -12,14 +12,6 @@ class Evaluation extends Model
         'evaluKey'
     ];
 
-    protected $hidden = [
-        'password'
-    ];
-
-    protected $casts = [
-        
-    ];
-
     /*public function evaluation_product(){
         return $this->hasMany(Evaluation_Product::class);
     }*/

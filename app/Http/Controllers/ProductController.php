@@ -61,10 +61,18 @@ class ProductController extends Controller
     public function evaluationProductForm($productId, ProductRepository $product, EvaluationRepository $evaluation){
 
         $productAtributs =  $product->oneProduct($productId);
-        $allEvaluationsProduct = $evaluation->allEvaluationsProduct($productId);
+       
 
         //dd($allEvaluationsProduct);
         //die;
-        return view('forms.evaluationForm', compact('productAtributs', 'allEvaluationsProduct'));
+
+        $productAndEvaluation = $product->oneProduct($productId);
+        $allEvaluationsProduct = $evaluation->allEvaluationsProduct($productId);
+        $product = $productAndEvaluation["product"];
+        $evalMed = $productAndEvaluation["evalMed"];
+        // dd($evalMed);
+        // die;
+
+        return view('forms.evaluationForm', compact('product', 'evalMed', 'allEvaluationsProduct'));
     }
 }

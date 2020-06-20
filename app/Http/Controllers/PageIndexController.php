@@ -7,14 +7,17 @@ use App\Http\Services\ProductRepository;
 
 class PageIndexController extends Controller
 {
-    public function index(ProductRepository $allProducts){
+    public function index(ProductRepository $allProductsEvals){
 
-        $products = $allProducts->allProducts();
+        $productsAndEvaluationsMed = $allProductsEvals->allProductsEvals();
         //dd($products);
         // foreach ($products as $value) {
         //     var_dump($value->name);
         // }
-        //die;
-        return view('index', compact('products'));
+        $products = $productsAndEvaluationsMed["products"];
+        $evalMeds = $productsAndEvaluationsMed["evalMeds"];
+        // dd($evalMeds);
+        // die;
+        return view('index', compact('products', 'evalMeds'));
     }
 }
