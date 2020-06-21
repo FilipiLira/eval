@@ -15,24 +15,38 @@
             @if (isset($discussionsProduct))
                 @foreach ($discussionsProduct as $item)
                     <div class="d-flex flex-row p-2">
-                        <div class="d-flex flex-column col-2" style="border-right: 1px solid rgb(156, 155, 155)">
-                            <div style="height: 100px;boder: 1px solid rgb(155, 153, 153)"></div>
-                        </div>
-                        <div class="col-10 d-flex flex-column">
-                            <div class="col-6">
-                                <p>Topico: {{$item->topic}}</p>
-                                <p>Topico: {{$item->topic_description}}</p>
+                        <div class="d-flex flex-column justify-content-center align-items-center col-2">
+                            <div style="height: 100px;boder: 1px solid rgb(155, 153, 153)">
+                                <img class="img-fluid" src="{{url('/img/perfil-twitter.png')}}" alt="user" style="width: 70px;">
                             </div>
-                            <div class="col-6 d-flex flex-row">
+                            <div class="d-flex flex-column">
                                 <?php 
-                                   $dateTime = explode(" ", $item->created_at);
+                                   $dateTime = explode(" ", $item->user_created_at);
                                    $createdDate = date('d/m/Y', strtotime($dateTime[0]));
                                    $createdTime = date('H:i', strtotime($dateTime[1]));
                                 ?>
-                                <p class="col-4 pr-0"><i class="fa fa-calendar" aria-hidden="true"></i> {{$createdDate}}</p>
-                                <p class="col-3 pl-0"><i class="fa fa-clock-o" aria-hidden="true"></i></i> {{$createdTime}}</p>
+                                <p class="m-0">Created by {{ $item->name }}</p>
+                                <p style="font-size: 0.7rem; text-align: center">{{$createdDate}}</p>
+   
                             </div>
                         </div>
+                    <a href="{{route('discussionPage', $item->id)}}" class="d-flex flex-row col-8" style="text-decoration: none">
+                            <div class="col-10 d-flex flex-column discussion-row">
+                                <div class="">
+                                    <p>Topico: {{$item->topic}}</p>
+                                    <p>Topico: {{$item->topic_description}}</p>
+                                </div>
+                                <div class="d-flex flex-row">
+                                    <?php 
+                                       $dateTime = explode(" ", $item->created_at);
+                                       $createdDate = date('d/m/Y', strtotime($dateTime[0]));
+                                       $createdTime = date('H:i', strtotime($dateTime[1]));
+                                    ?>
+                                    <p class="col-3 p-1"><i class="fa fa-calendar" aria-hidden="true"></i> {{$createdDate}}</p>
+                                    <p class="col-2 p-1"><i class="fa fa-clock-o" aria-hidden="true"></i></i> {{$createdTime}}</p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 @endforeach
             @endif

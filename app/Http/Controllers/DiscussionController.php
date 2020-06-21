@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Services\ProductRepository;
 use App\Http\Services\DiscussionRepository;
-
+use Illuminate\Support\Facades\Auth;
 
 class DiscussionController extends Controller
 {
@@ -32,5 +32,22 @@ class DiscussionController extends Controller
         $product = \App\Product::find($productId);
 
         return view('discussions.discussionsProduct', compact('discussionsProduct', 'product'));
+    }
+
+    public function discusionPage($discussionId, DiscussionRepository $discussionR){
+        $user = false;
+        if(Auth::check() === true){
+            $user = \App\User::find(Auth::user()->id);
+        }
+
+        $discussion = \App\Discussion::find($discussionId);
+        $product = \App\Product::find($discussion->product_id);
+
+        $discussionPosts = $discussionR->discussionPosts($discussionId);
+
+        // dd($discussionPosts);
+        // die;
+
+        return view('discussions.discussionPage', compact('discussionPosts', 'discussionId', 'product', 'user'));
     }
 }

@@ -2,9 +2,9 @@
 
 @section('content')
         <div class="container d-flex flex-row">
-            <div class="d-flex flex-row col-2">
-                <div class="p-1 d-flex flex-column">
-                    <img src="{{route("home.productImg", $product->image)}}" style="height:175px" alt="..." class="img-rounded">
+            <div class="d-flex flex-row col-3">
+                <div class="p-3 d-flex flex-column">
+                    <img src="{{route("home.productImg", $product->image)}}" style="height:175px" alt="..." class="img-fluid">
                     <p style="font-size: 1.3rem">{{$product->name}}</p>
                     <div class="d-flex flex-row align-items-center">
                         <i id="star-1" class="fa fa-star star text-warning m-1" style="cursor: pointer; font-size: 1.3rem" aria-hidden="true"></i>
