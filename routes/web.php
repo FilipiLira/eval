@@ -53,3 +53,5 @@ Route::get('/dicussions/{productId}', 'DiscussionController@discussionsPage')->n
 Route::get('/discussionPage/{discussionId}', 'DiscussionController@discusionPage')->name('discussionPage');
 
 Route::post('/discussion/createPost', 'PostController@createPost')->name('createPost');
+
+Route::get('/notificationsUser/{userId}', 'NotificationController@notificationsUserAjax')->name('notificationsUser');

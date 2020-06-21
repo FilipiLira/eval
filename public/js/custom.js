@@ -103,3 +103,40 @@ textareaEdit()*/
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
+
+function notifications(){
+    $('#notifications-btn').on('click', ()=>{
+        let userId = $('#postAjaxNotifications').val()
+        let url = $('#postAjaxNotifications').attr('url')
+        let data = {
+            user: userId
+        }
+
+        $.getJSON(url, function (data) {
+           //console.log(data);
+           //
+
+           let notifications = `
+                                <p class="text-center">Notificações</p>
+           `
+           let font1 = 'font-size: 0.9rem'
+           let font2 = 'font-size: 0.7rem'
+
+           data.forEach(notificationObj => {
+    
+            notifications += `
+                   <a href="/discussionPage/${notificationObj.discussionId}">
+                        <div class="d-flex flex-column">
+                             <div class="d-flex flex-row">
+                                 <p class="px-2 m-0" style="${font1}"><strong>${notificationObj.name}</strong> fez um post na sua discussão sobre <strong>${notificationObj.product}</strong></p>
+                             </div>
+                             <span class="p-1" style="boder: 5px solid #333"></span>
+                        </div>
+                   </a>
+            `
+           });
+           $('#notifications-container').html(notifications)
+        });
+    })
+}
+notifications()

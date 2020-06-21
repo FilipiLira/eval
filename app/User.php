@@ -46,6 +46,10 @@ class User extends Authenticatable
         return $this->hasMany(Discussion::class);
     }
 
+    public function notification(){
+        return $this->hasMany(Notification::class);
+    }
+
     /*public function  evaluation_products()
     {
         return $this->morphMany('App\Evaluation_Product', 'user');

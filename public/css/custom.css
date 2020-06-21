@@ -16,3 +16,7 @@
     
     border-left: 5px solid rgb(204, 202, 202)
 }
+
+.dropdown-menu{
+    min-width: 17rem!important;
+}

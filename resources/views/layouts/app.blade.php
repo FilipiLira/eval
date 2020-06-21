@@ -54,6 +54,17 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
+                                <a id="notifications-btn" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <i class="fa fa-bell-o" aria-hidden="true"></i>
+                                </a>
+                                <input url="{{route('notificationsUser', Auth::user()->id)}}" id="postAjaxNotifications" type="hidden" name="postAjaxNotifications" value="{{Auth::user()->id}}">
+
+                                <div id="notifications-container" class="dropdown-menu dropdown-menu-right" aria-labelledby="notifications-btn">
+                                    <p class="dropdown-item">Sem notificações</p>
+                                </div>
+
+                            </li>
+                            <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
