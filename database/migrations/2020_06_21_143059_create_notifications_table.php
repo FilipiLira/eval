@@ -18,6 +18,7 @@ class CreateNotificationsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('discussion_id');
             $table->unsignedBigInteger('post_id');
+            $table->int('status'); // 1 | 0
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

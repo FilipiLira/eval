@@ -14,7 +14,8 @@ class NotificationRepository{
         $notification = $user->notification()->create([
             'user_id' => $userId,
             'discussion_id' => $discussionId,
-            'post_id' => $postId
+            'post_id' => $postId,
+            'status' => 1
         ]);
 
         return $notification;

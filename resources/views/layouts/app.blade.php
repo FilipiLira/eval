@@ -55,7 +55,9 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="notifications-btn" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <i class="fa fa-bell-o" aria-hidden="true"></i>
+                                    <div id="notification-icons" class="d-flex flex-row">
+                                        <i class="fa fa-bell-o" style="font-size: 1.5rem" aria-hidden="true"></i>
+                                    </div>
                                 </a>
                                 <input url="{{route('notificationsUser', Auth::user()->id)}}" id="postAjaxNotifications" type="hidden" name="postAjaxNotifications" value="{{Auth::user()->id}}">
 

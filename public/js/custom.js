@@ -82,9 +82,6 @@ console.log(evaluation)
         $(`#avaliation${i}`).html(stars)*/
     }
 }
-$(document).ready(()=>{
-    evaluationIndex()
-})
 
 /*function textareaEdit(){
     bkLib.onDomLoaded(function() { nicEditors.allTextAreas() }); // convert all text areas to rich text editor on that page
@@ -105,7 +102,7 @@ $(function () {
 })
 
 function notifications(){
-    $('#notifications-btn').on('click', ()=>{
+    //$('#notifications-btn').on('click', ()=>{
         let userId = $('#postAjaxNotifications').val()
         let url = $('#postAjaxNotifications').attr('url')
         let data = {
@@ -126,7 +123,7 @@ function notifications(){
     
             notifications += `
                    <a href="/discussionPage/${notificationObj.discussionId}">
-                        <div class="d-flex flex-column">
+                        <div class="d-flex flex-column notification-container" status="${notificationObj.status}">
                              <div class="d-flex flex-row">
                                  <p class="px-2 m-0" style="${font1}"><strong>${notificationObj.name}</strong> fez um post na sua discussão sobre <strong>${notificationObj.product}</strong></p>
                              </div>
@@ -137,6 +134,27 @@ function notifications(){
            });
            $('#notifications-container').html(notifications)
         });
-    })
+    //})
 }
-notifications()
+
+function newNotification(){
+    let news = 0;
+
+    $('.notification-container').each((i, elem)=>{
+       let status = $(elem).attr('status') 
+       news += parseInt(status)
+       
+    })
+    let quantNotific = ` <span class="justify-content-center align-items-center text-light" style="display: flex; width: 16px; height: 16px; background-color: red; border-radius: 50%; font-size: 0.7rem">${news}</span>`
+    
+    $('#notification-icons').append(quantNotific)
+    
+}
+$(document).ready(()=>{
+    evaluationIndex()
+    notifications()
+    
+    setTimeout(()=>{
+        newNotification()
+    }, 1500)
+})
