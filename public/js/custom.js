@@ -48,18 +48,18 @@ function starsEvaluation() {
                 })
             }
         })
-        
+
     })
 }
 starsEvaluation()
 
 
-function evaluationIndex(){
+function evaluationIndex() {
     let totalProducts = $('#productsList').attr('totalProducts')
 
-    for(let i = 0; i < totalProducts; i++){
+    for (let i = 0; i < totalProducts; i++) {
         let evaluation = $(`#avaliation${i}`).attr('avaliation')
-console.log(evaluation)
+        console.log(evaluation)
         let stars = ''
 
         evaluationPNumber = 0
@@ -101,60 +101,147 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
 
-function notifications(){
+function notifications() {
     //$('#notifications-btn').on('click', ()=>{
-        let userId = $('#postAjaxNotifications').val()
-        let url = $('#postAjaxNotifications').attr('url')
-        let data = {
-            user: userId
-        }
+    let userId = $('#postAjaxNotifications').val()
+    let url = $('#postAjaxNotifications').attr('url')
+    let data = {
+        user: userId
+    }
 
-        $.getJSON(url, function (data) {
-           //console.log(data);
-           //
+    $.getJSON(url, function (data) {
+        //console.log(data);
+        //
+        console.log(data)
 
-           let notifications = `
+        //let ar = 
+
+        let notifications = `
                                 <p class="text-center">Notificações</p>
            `
-           let font1 = 'font-size: 0.9rem'
-           let font2 = 'font-size: 0.7rem'
+        let font1 = 'font-size: 0.9rem'
+        let font2 = 'font-size: 0.7rem'
+        let newData = data.sort((a, b) => {
+            console.log(a.id, b.id)
+            if (a.status > b.status) {
+                return -1
+            }
+            if (a.status < b.status) {
+                return 1
+            }
 
-           data.forEach(notificationObj => {
-    
+            return
+        })
+
+        console.log(newData)
+        for (const i in data) {
+            let bgNewNotif = data[i].status == 1 ? 'bg-warning' : ''
+
             notifications += `
-                   <a href="/discussionPage/${notificationObj.discussionId}">
-                        <div class="d-flex flex-column notification-container" status="${notificationObj.status}">
+                   <a href="/discussionPage/${data[i].discussionId}" style="text-decoration: none; text-color: #333">
+                        <div class="d-flex flex-column notification-container ${bgNewNotif} m-2" style="border-radius: 0.25rem" status="${data[i].status}" notifId="${data[i].id}">
                              <div class="d-flex flex-row">
-                                 <p class="px-2 m-0" style="${font1}"><strong>${notificationObj.name}</strong> fez um post na sua discussão sobre <strong>${notificationObj.product}</strong></p>
+                                 <p class="px-2 m-0" style="${font1}"><strong>${data[i].name}</strong> fez um post na sua discussão sobre <strong>${data[i].product}</strong> em <strong>${data[i].discussion}</strong></p>
                              </div>
                              <span class="p-1" style="boder: 5px solid #333"></span>
                         </div>
                    </a>
             `
-           });
-           $('#notifications-container').html(notifications)
-        });
+        }
+
+        //data.forEach(notificationObj => {
+
+        // let bgNewNotif = notificationObj.status == 1 ? 'bg-warning' : ''
+
+        // notifications += `
+        //        <a href="/discussionPage/${notificationObj.discussionId}" style="text-decoration: none; text-color: #333">
+        //             <div class="d-flex flex-column notification-container ${bgNewNotif} m-2" style="border-radius: 0.25rem" status="${notificationObj.status}">
+        //                  <div class="d-flex flex-row">
+        //                      <p class="px-2 m-0" style="${font1}"><strong>${notificationObj.name}</strong> fez um post na sua discussão sobre <strong>${notificationObj.product}</strong></p>
+        //                  </div>
+        //                  <span class="p-1" style="boder: 5px solid #333"></span>
+        //             </div>
+        //        </a>
+        // `
+        //});
+        $('#notifications-container').html(notifications)
+    });
     //})
 }
 
-function newNotification(){
+function newNotification() {
     let news = 0;
 
-    $('.notification-container').each((i, elem)=>{
-       let status = $(elem).attr('status') 
-       news += parseInt(status)
-       
+    $('.notification-container').each((i, elem) => {
+        let status = $(elem).attr('status')
+        news += parseInt(status)
+
     })
-    let quantNotific = ` <span class="justify-content-center align-items-center text-light" style="display: flex; width: 16px; height: 16px; background-color: red; border-radius: 50%; font-size: 0.7rem">${news}</span>`
-    
+
+    let quantNotific = ''
+
+    if(news >= 1){
+        quantNotific = ` <span id="notifIcon" class="justify-content-center align-items-center text-light" style="display: flex; width: 16px; height: 16px; background-color: red; border-radius: 50%; font-size: 0.7rem">${news}</span>`
+    }
+
     $('#notification-icons').append(quantNotific)
-    
+
 }
-$(document).ready(()=>{
+
+function updateNotifications() {
+    $('#notifications-btn').on('click', () => {
+
+        $('#notifIcon').remove()
+        ////////////////////
+
+        let notifiactions = $('.notification-container')
+        let notifData = new Array()
+
+        // Pegando os id das novas notificações vizualizadas
+        notifiactions.each((i, notif) => {
+            if($(notif).attr('status') == 1){
+                notifData.push({ id: $(notif).attr('notifId') })
+            }
+        })
+
+        // console.log(notifData)
+        // console.log(JSON.parse(notifData))
+
+        // Configurando o cabesalho da req para receber o valor do csrf-token
+        var _token = $('meta[name="_token"]').attr('content');
+
+        $.ajaxSetup({
+
+            headers: {
+
+                'X-CSRF-TOKEN': _token
+
+            }
+
+        });
+
+        //Enviando os dados
+        ////
+        $.ajax({
+            url: "/notificationsUpdate",
+            type: 'post',
+            data: {
+                notifIds: notifData
+            },
+
+            success: (data)=>{
+               console.log(data)
+            }
+        })
+    })
+}
+updateNotifications()
+
+$(document).ready(() => {
     evaluationIndex()
     notifications()
-    
-    setTimeout(()=>{
+
+    setTimeout(() => {
         newNotification()
     }, 1500)
 })
