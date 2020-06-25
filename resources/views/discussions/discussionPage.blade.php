@@ -39,13 +39,18 @@
                                 <p>{{$item->body}}</p>
                             </div>
                             <div class="d-flex flex-row">
-                                <?php 
-                                   $dateTime = explode(" ", $item->post_created);
-                                   $createdDate = date('d/m/Y', strtotime($dateTime[0]));
-                                   $createdTime = date('H:i', strtotime($dateTime[1]));
-                                ?>
-                                <p class="col-3 p-1"><i class="fa fa-calendar" aria-hidden="true"></i> {{$createdDate}}</p>
-                                <p class="col-2 p-1"><i class="fa fa-clock-o" aria-hidden="true"></i></i> {{$createdTime}}</p>
+                                <div class="col-8 d-flex flex-row">
+                                    <?php 
+                                       $dateTime = explode(" ", $item->post_created);
+                                       $createdDate = date('d/m/Y', strtotime($dateTime[0]));
+                                       $createdTime = date('H:i', strtotime($dateTime[1]));
+                                    ?>
+                                    <p class="col-3 p-1 m-0"><i class="fa fa-calendar" aria-hidden="true"></i> {{$createdDate}}</p>
+                                    <p class="col-2 p-1 m-0"><i class="fa fa-clock-o" aria-hidden="true"></i></i> {{$createdTime}}</p>
+                                </div>
+                                <div class="col-4 d-flex flex-row justify-content-end align-items-end">
+                                    <i class="fa fa-thumbs-up btn-like" style="font-size: 1.5rem; color: #c4c6c8; cursor: pointer;" aria-hidden="true"></i>
+                                </div>
                             </div>
                         </div>
                         {{-- </a> --}}

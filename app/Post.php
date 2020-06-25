@@ -14,4 +14,9 @@ class Post extends Model
     public function discussion(){
         return $this->belongsTo(Discussion::class);
     }
+
+    public function like(){
+
+        return $this->hasOne(Like::class);
+    }
 }

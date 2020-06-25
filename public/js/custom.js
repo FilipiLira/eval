@@ -237,9 +237,20 @@ function updateNotifications() {
 }
 updateNotifications()
 
+function like(){
+    $('.btn-like').each((i, elem)=>{
+        $(elem).on('click', ()=>{
+            console.log('teste')
+            $(elem).toggleClass('btn-like-clicked')
+        })
+    })
+}
+
+
 $(document).ready(() => {
     evaluationIndex()
     notifications()
+    like()
 
     setTimeout(() => {
         newNotification()

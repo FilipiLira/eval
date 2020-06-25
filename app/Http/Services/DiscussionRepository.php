@@ -37,6 +37,7 @@ class DiscussionRepository{
     public function discussionPosts($discussionId){
         $discussionPosts = \App\Post::join('discussions', 'discussions.id', '=', 'posts.discussion_id')
                                             ->join('users', 'users.id', '=', 'posts.user_id')
+                                            //->leftJoin('likes', 'posts.id', '=', 'likes.post_id')
                                             ->select('discussions.*', 'users.name', 'posts.*' ,'posts.id AS post_id', 'posts.created_at AS post_created', 'users.created_at AS user_created_at')
                                             ->where('discussions.id', $discussionId)->get();//paginate(4);
 

@@ -20,3 +20,36 @@
 .dropdown-menu{
     min-width: 17rem!important;
 }
+
+.btn-like:active{
+    /* transition: all .2s ease-in-out;
+    transform: scale(1.5); */
+    animation-name: like-icon;
+    animation-duration: .9s;
+}
+
+.btn-like-clicked{
+    color: rgb(121, 224, 73)!important;
+}
+
+@keyframes like-icon{
+    0% {
+       transform: translateY(0px);
+    }
+
+    25% {
+        transform: translateY(-10px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    75% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
