@@ -3,8 +3,6 @@ namespace App\Http\Services;
 use App\Http\Services\CommentRepository;
 use Illuminate\Support\Facades\Auth;
 use App\Discussion;
-
-use App\User;
 //use App\Evaluation_Product;
 
 class NotificationRepository{

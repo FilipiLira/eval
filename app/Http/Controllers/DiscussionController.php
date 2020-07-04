@@ -45,6 +45,10 @@ class DiscussionController extends Controller
 
         $discussionPosts = $discussionR->discussionPosts($discussionId);
 
+        // foreach ($discussionPosts as $key => $post) {
+        //     dd($post['post']->id);
+        // }
+
         // dd($discussionPosts);
         // die;
 

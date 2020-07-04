@@ -24,11 +24,11 @@
                             </div>
                             <div class="d-flex flex-column">
                                 <?php 
-                                   $dateTime = explode(" ", $item->user_created_at);
+                                   $dateTime = explode(" ", $item['post']->user_created_at);
                                    $createdDate = date('d/m/Y', strtotime($dateTime[0]));
                                    $createdTime = date('H:i', strtotime($dateTime[1]));
                                 ?>
-                                <p class="m-0">Created by {{ $item->name }}</p>
+                                <p class="m-0">Created by {{ $item['post']->name }}</p>
                                 <p style="font-size: 0.7rem; text-align: center">{{$createdDate}}</p>
     
                             </div>
@@ -36,12 +36,12 @@
                     {{-- <a href="{{route('discussionPage', $item->id)}}" class="d-flex flex-row col-8" style="text-decoration: none"> --}}
                         <div class="col-10 d-flex flex-column justify-content-around" style="border: 2px dashed rgb(158, 155, 155)">
                             <div class="">
-                                <p>{{$item->body}}</p>
+                                <p>{{$item['post']->body}}</p>
                             </div>
                             <div class="d-flex flex-row">
                                 <div class="col-8 d-flex flex-row">
                                     <?php 
-                                       $dateTime = explode(" ", $item->post_created);
+                                       $dateTime = explode(" ", $item['post']->post_created);
                                        $createdDate = date('d/m/Y', strtotime($dateTime[0]));
                                        $createdTime = date('H:i', strtotime($dateTime[1]));
                                     ?>
@@ -49,8 +49,20 @@
                                     <p class="col-2 p-1 m-0"><i class="fa fa-clock-o" aria-hidden="true"></i></i> {{$createdTime}}</p>
                                 </div>
                                 <div class="col-4 d-flex flex-row justify-content-end align-items-end">
-                                    <i class="fa fa-thumbs-up btn-like" style="font-size: 1.5rem; color: #c4c6c8; cursor: pointer;" aria-hidden="true"></i>
+                                    <i class="fa fa-thumbs-up btn-like" style="font-size: 1.5rem; color: #c4c6c8; cursor: pointer;" aria-hidden="true" postId="{{$item['post']->id}}"></i>
+                                    @foreach ($item['likes'] as $like)
+                                        <?php
+                                            $contLikes = count($item['likes']);
+                                        ?>
+                                    @endforeach
+                                    
+                                    <span>{{$contLikes}}</span>
                                 </div>
+                                {{-- <form action="{{route('postLike')}}" method="post">
+                                    @csrf
+                                    <input type="text" name="postId" value="{{$item->id}}">
+                                    <button type="submit">Env</button>
+                                </form> --}}
                             </div>
                         </div>
                         {{-- </a> --}}

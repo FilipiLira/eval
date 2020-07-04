@@ -57,4 +57,5 @@ Route::post('/discussion/createPost', 'PostController@createPost')->name('create
 Route::get('/notificationsUser/{userId}', 'NotificationController@notificationsUserAjax')->name('notificationsUser');
 Route::post('/notificationsUpdate', 'NotificationController@notificationsUpdateAjax')->name('notificationsUpdate');
 
-Route::post('/discussion/postLike', 'LikeController@createUpdateLike')->name('postLike');
+Route::post('/discussion/createUpPostLike', 'LikeController@createUpdateLikeAjax')->name('postLike');
+Route::get('/discussion/likesPost/{postId}', 'LikeController@likesPostAjax')->name('likesPost');

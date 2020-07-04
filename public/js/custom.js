@@ -180,7 +180,7 @@ function newNotification() {
 
     let quantNotific = ''
 
-    if(news >= 1){
+    if (news >= 1) {
         quantNotific = ` <span id="notifIcon" class="justify-content-center align-items-center text-light" style="display: flex; width: 16px; height: 16px; background-color: red; border-radius: 50%; font-size: 0.7rem">${news}</span>`
     }
 
@@ -199,7 +199,7 @@ function updateNotifications() {
 
         // Pegando os id das novas notificações vizualizadas
         notifiactions.each((i, notif) => {
-            if($(notif).attr('status') == 1){
+            if ($(notif).attr('status') == 1) {
                 notifData.push({ id: $(notif).attr('notifId') })
             }
         })
@@ -229,22 +229,62 @@ function updateNotifications() {
                 notifIds: notifData
             },
 
-            success: (data)=>{
-               console.log(data)
+            success: (data) => {
+                console.log(data)
             }
         })
     })
 }
 updateNotifications()
 
-function like(){
-    $('.btn-like').each((i, elem)=>{
-        $(elem).on('click', ()=>{
-            console.log('teste')
+function like() {
+    $('.btn-like').each((i, elem) => {
+        $(elem).on('click', () => {
+            // console.log('teste')
             $(elem).toggleClass('btn-like-clicked')
+
+            let postId = $(elem).attr('postId')
+
+            // Configurando o cabesalho da req para receber o valor do csrf-token
+            var _token = $('meta[name="_token"]').attr('content');
+
+            $.ajaxSetup({
+
+                headers: {
+
+                    'X-CSRF-TOKEN': _token
+
+                }
+
+            });
+
+            $.ajax({
+                url: "/discussion/createUpPostLike",
+                type: 'post',
+                data: {
+                    postId: postId
+                },
+
+                success: (data) => {
+                    console.log(data)
+                }
+            })
         })
     })
 }
+
+// function loadLikesPosts(){
+//     let url = $('#postAjaxNotifications').attr('url')
+//     let data = {
+//         user: userId
+//     }
+
+//     $.getJSON(url, function (data) {
+//         //console.log(data);
+//         //
+//         console.log(data)
+//     })
+// }
 
 
 $(document).ready(() => {
