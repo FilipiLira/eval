@@ -266,7 +266,13 @@ function like() {
                 },
 
                 success: (data) => {
-                    console.log(data)
+                    let res = JSON.parse(data)
+                    $('.likeContSpan').each((i, elem)=>{
+                        if($(elem).attr('idPost') == res.postId){
+                            $(elem).html(res.likes)
+                        }
+                    })
+                    console.log( JSON.parse(data))
                 }
             })
         })
@@ -286,11 +292,33 @@ function like() {
 //     })
 // }
 
+function showlikesUsersNames(){
+    $('.likeContSpan').each((i, elem)=>{
+        $(elem).mouseenter(()=>{
+            let father = $(elem).parent()
+            let brother = father.children()[1]
+            let top = $(brother).height() * 1.2
+            $(brother).css('top', `-${top}px`)
+            $(brother).fadeIn(200).css('display', 'flex')
+        })
+    })
+
+    $('.likeContSpan').each((i, elem)=>{
+        $(elem).mouseleave(()=>{
+            let father = $(elem).parent()
+            let brother = father.children()[1]
+
+            $(brother).fadeOut(200)
+        })
+    })
+}
+
 
 $(document).ready(() => {
     evaluationIndex()
     notifications()
     like()
+    showlikesUsersNames()
 
     setTimeout(() => {
         newNotification()

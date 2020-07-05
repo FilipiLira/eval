@@ -49,14 +49,33 @@
                                     <p class="col-2 p-1 m-0"><i class="fa fa-clock-o" aria-hidden="true"></i></i> {{$createdTime}}</p>
                                 </div>
                                 <div class="col-4 d-flex flex-row justify-content-end align-items-end">
-                                    <i class="fa fa-thumbs-up btn-like" style="font-size: 1.5rem; color: #c4c6c8; cursor: pointer;" aria-hidden="true" postId="{{$item['post']->id}}"></i>
-                                    @foreach ($item['likes'] as $like)
-                                        <?php
-                                            $contLikes = count($item['likes']);
-                                        ?>
-                                    @endforeach
-                                    
-                                    <span>{{$contLikes}}</span>
+                                    <div class=" col-4 d-flex flex-row justify-content-between align-items-end bg-dark card">
+                                        <?php $usersIdsLikes = [] ?>
+                                        @foreach ($item['likes'] as $like)
+                                            <?php array_push($usersIdsLikes, $like->id) ?>
+                                        @endforeach
+                                        @if (in_array(Auth::user()->id, $usersIdsLikes))
+
+                                            <i class="fa fa-thumbs-up btn-like btn-like-clicked" style="font-size: 1.5rem; color: #FFF; cursor: pointer;" aria-hidden="true" postId="{{$item['post']->id}}"></i>
+                                            
+                                        @else 
+                                           
+                                            <i class="fa fa-thumbs-up btn-like" style="font-size: 1.5rem; color: #FFF; cursor: pointer;" aria-hidden="true" postId="{{$item['post']->id}}"></i>
+                                            
+                                        @endif 
+
+                                        <?php $contLikes = 0 ?>
+
+                                        <ul IdPost="{{$item['post']->id}}" class="likes-users-names">
+                                            @foreach ($item['likes'] as $like)
+                                                <?php
+                                                    $contLikes = count($item['likes']);
+                                                ?>
+                                                <li class="list-group-item bg-dark text-light">{{$like->name}}</li>
+                                            @endforeach
+                                        </ul>
+                                        <span class="likeContSpan text-light " idPost="{{$item['post']->id}}">{{$contLikes}}</span>
+                                    </div>
                                 </div>
                                 {{-- <form action="{{route('postLike')}}" method="post">
                                     @csrf

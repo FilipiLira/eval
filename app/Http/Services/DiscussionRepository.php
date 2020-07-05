@@ -48,7 +48,7 @@ class DiscussionRepository{
 
         foreach ($discussionPosts as $key => $post) {
             $likes = \App\Like::join('users', 'likes.user_id', 'users.id')
-                                ->select('likes.*', 'users.name')
+                                ->select('likes.*', 'users.name', 'users.id')
                                 ->where('post_id', $post->post_id)->get();
 
             $discussionPostsLikes['post'] = $post;

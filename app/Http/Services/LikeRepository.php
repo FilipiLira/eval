@@ -14,14 +14,18 @@ class LikeRepository{
         if($hasLike){
             \App\Like::where('user_id', '=', $userId)->where('post_id', '=', $postId)->delete();
 
-            return false;
+            $likesPost = \App\Like::where('post_id', $postId)->count();
+
+            return '{"likes":"'.$likesPost.'", "postId":"'.$postId.'"}';
         } else {
             $like = \App\Like::create([
                 'user_id' => $userId,
                 'post_id' => $postId
             ]);
 
-            return $like;
+            $likesPost = \App\Like::where('post_id', $postId)->count();
+
+            return '{"likes":"'.$likesPost.'", "postId":"'.$postId.'"}';
         }
     }
 

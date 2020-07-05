@@ -53,3 +53,17 @@
         transform: translateY(0px);
     }
 }
+
+.likes-users-names{
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    width: 150px;
+    padding-left: 0;
+    margin-bottom: 0;
+    border-radius: 0.25rem;
+}
+
+.likeContSpan{
+    cursor: pointer;
+}
