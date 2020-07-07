@@ -5,8 +5,8 @@ use App\Http\Services\CommentRepository;
 
 class ProductRepository{
     
-    public function allProductsEvals(){
-        $products = \App\Product::paginate(3);
+    public function allProductsEvals($productsParam = null){
+        $products = $productsParam ? $productsParam : \App\Product::paginate(3);
         //$productsPagenate = $products = \App\Product::paginate(2);
 
         $arrayEvaluationProductMed = [];
@@ -124,6 +124,13 @@ class ProductRepository{
         //                        ->join('comments', 'evaluation_product.comment_id', '=', 'comments.id')
         //                        ->where('evaluation_product.id', '>', '0')->paginate(7);
 
+    }
+
+    public function allUserProducts($user){
+        $products = \App\Product::where('user_id', $user)->get();
+        $userProducts = $this->allProductsEvals($products);
+
+        return $userProducts;
     }
 }
 

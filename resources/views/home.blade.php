@@ -14,7 +14,19 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <div>
+                        <ul class="list-group" style="list-style: none">
+                           <li class="p-2">
+                            <a href="{{route('user.userProducts', Auth::user()->id)}}">Produtos</a>
+                           </li>
+                           <li class="p-2">
+                           <a href="">Discursões</a>
+                           </li>
+                           <li class="p-2">
+                           <a href="">Editar perfil</a>
+                           </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 

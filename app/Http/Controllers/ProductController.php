@@ -75,4 +75,12 @@ class ProductController extends Controller
 
         return view('forms.evaluationForm', compact('product', 'evalMed', 'allEvaluationsProduct'));
     }
+
+    public function userProducts($user, ProductRepository $productsR){
+        $userProducts = $productsR->allUserProducts($user);
+
+        // dd($userProducts);
+        // die;
+        return view('user.userProducts', compact('userProducts'));
+    }
 }

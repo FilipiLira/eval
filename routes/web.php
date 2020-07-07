@@ -41,6 +41,10 @@ Route::prefix('home')->name('home.')->group(function(){
     Route::get('/productImg/{imgName}', 'ProductController@imgReq')->name('productImg'); // rota que retorna imagens de produtos cadastrados
 });
 
+Route::prefix('/user')->name('user.')->group(function(){
+    Route::get('/products/{userId}', 'ProductController@userProducts')->name('userProducts');
+});
+
 // Rotas das avaliações
 Route::get('/evaluationProduct/{productId}', 'ProductController@evaluationProductForm')->name('evaluationProduct');
 Route::post('/evaluationProduct/create', 'Evaluation_ProductController@evaluationProductCreate')->name('evaluationProduct.create');
