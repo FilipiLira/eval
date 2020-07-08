@@ -54,4 +54,11 @@ class DiscussionController extends Controller
 
         return view('discussions.discussionPage', compact('discussionPosts', 'discussionId', 'product', 'user'));
     }
+
+    public function userDiscussions($userId, DiscussionRepository $discussionR){
+
+        $discussions = $discussionR->allDiscussionsUser($userId);
+
+        return view('user.userDiscussions', compact('discussions'));
+    }
 }

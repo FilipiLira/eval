@@ -42,7 +42,8 @@ Route::prefix('home')->name('home.')->group(function(){
 });
 
 Route::prefix('/user')->name('user.')->group(function(){
-    Route::get('/products/{userId}', 'ProductController@userProducts')->name('userProducts');
+    Route::get('userDiscussions/{userId}', 'DiscussionController@userDiscussions')->name('userDiscussions');
+    Route::get('userEditPerfil/{userId}', 'UserController@editPerfil')->name('userEditPerfil');
 });
 
 // Rotas das avaliações

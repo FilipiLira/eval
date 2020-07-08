@@ -13,10 +13,9 @@
                 </div>
             </div>
             <div class="d-flex flex-column">
+
                 @foreach ($discussionPosts as $item)
-
-
-
+                
                     <div class="d-flex flex-row p-2">
                         <div class="d-flex flex-column justify-content-center align-items-center col-2">
                             <div style="height: 100px;boder: 1px solid rgb(155, 153, 153)">

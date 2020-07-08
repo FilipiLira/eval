@@ -59,4 +59,12 @@ class DiscussionRepository{
 
         return $fullPostData;
     }
+
+    public function allDiscussionsUser($userId){
+        $allDiscussions = \App\Discussion::join('users', 'users.id', 'discussions.user_id')
+                                           ->select('discussions.*', 'users.created_at as user_created_at')
+                                           ->where('user_id', $userId)->paginate(3);
+
+        return $allDiscussions;
+    }
 }
