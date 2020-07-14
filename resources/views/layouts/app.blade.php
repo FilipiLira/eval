@@ -75,6 +75,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                    <a class="dropdown-item" href="{{route('home.home')}}">Perfil</a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -96,5 +99,81 @@
             @yield('content')
         </main>
     </div>
+    
+    <footer class="footer">
+        <div class="top-footer row m-0 pb-1">
+            <div class="col-4 col-lg-3 d-flex flex-row justify-content-center">
+                <ul style="list-style: none; color: #4f4f4f; margin: 10px!important;">
+                    <li class="">
+                        <a href="#"><strong>Início</strong></a>
+                    </li>
+                    <li class="">
+                     <a href="#">Buscar produto</a>
+                    </li>
+                    <li class="">
+                        <a href="#">Rankings</a>
+                    </li>
+                    <li class="">
+                        <a href="#">Mais avaliados</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="col-4 col-lg-3 d-flex flex-row justify-content-center">
+                <ul style="list-style: none; margin: 10px!important;">
+                    <li class="">
+                        <a href="#"><strong>Sobre</strong></a>
+                    </li>
+                    <li class="">
+                     <a href="#">Empresa</a>
+                    </li>
+                    <li class="">
+                        <a href="#">Mapa do site</a>
+                    </li>
+                    <li class="">
+                        <a href="#">Contato</a>
+                    </li>
+                </ul>
+            </div>
+           
+            <div class="col-4 col-lg-3 d-flex flex-row justify-content-center">
+                <ul style="list-style: none; margin: 10px!important;">
+                    <li class="">
+                        <a href="#"><strong>Suporte</strong></a>
+                    </li>
+                    <li class="">
+                     <a href="#">FAQ</a>
+                    </li>
+                    <li class="">
+                        <a href="#">Sugestões</a>
+                    </li>
+                    <li class="">
+                        <a href="#">Termos</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-12 col-lg-3 d-flex flex-row justify-content-center">
+                <div class="d-flex flex-column justify-content-center">
+                    <div class="d-flex flex-row justify-content-center align-items-center">
+                        <i class="fa fa-facebook p-2 social-icon" aria-hidden="true"></i>
+                        <i class="fa fa-instagram p-2 social-icon" aria-hidden="true"></i>
+                        <i class="fa fa-twitter p-2 social-icon" aria-hidden="true"></i>
+                        <i class="fa fa-linkedin p-2 social-icon" aria-hidden="true"></i>
+                    </div>
+                    <div class="d-flex flex-row justify-content-center" style="background-color: rgba(235, 41, 41, 0.9); border-radius: 0.95rem; cursor: pointer">
+                       <span style="font-size: 1.2rem; color: #fff">Contato</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-footer d-flex flex-row justify-content-center">
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <div class="d-flex flex-row align-items-end">
+                    <p class="m-0" style="color: #4f4f4f; font-family: 'Lobster'; font-size: 1.7rem">Evall®</p><p class="m-2" style="color: #4f4f4f"> 2020</p>
+                </div>
+                <p class="m-0" style="color: #4f4f4f">todos os direiotos reservados</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

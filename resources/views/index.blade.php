@@ -3,13 +3,34 @@
 @section('content')
     <div class="container">
         <h1>Produtos</h1>
-        <div class="d-flex flex-column" id="productsList" totalProducts="{{count($products)}}">
+        <div class="d-flex flex-row" id="productsList" totalProducts="{{count($products)}}">
            @if (isset($products))
                 @foreach ($products as $key => $product)
                     
                         @if ($product)
 
+                        <div class="d-flex flex-row product-column" style="background-color: #333">
+                            <div class="p-1 col-2">
+                                <img src="{{route("home.productImg", $product->image)}}" style="height:200px" alt="..." class="img-rounded">
+                            </div>
+                            <div class="p-1 col-8 d-flex flex-column justify-content-around">
+                                <h5>{{$product->name}}</h5>
+                                <div class="d-flex flex-column align-items-center">
+                                    <p class="text-secondary m-0 mr-2">Forum</p>
+                                    <div style="border-left: 1px solid rgb(167, 166, 166)">
+                                    <a href="{{route('discussions', $product->id)}}"class="btn btn-outline-primary ml-3" data-toggle="tooltip" title="Topicos do forum">
+                                            <i class="fa fa-users" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="{{route('newDiscussion', $product->id)}}" class="btn btn-outline-primary ml-3" data-toggle="tooltip" title="Novo Topico do forum">
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                             <div class="d-flex flex-row product-row">
+
                                 <div class="p-1 col-2">
                                     <img src="{{route("home.productImg", $product->image)}}" style="height:100px" alt="..." class="img-rounded">
                                 </div>

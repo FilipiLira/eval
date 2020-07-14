@@ -42,8 +42,10 @@ Route::prefix('home')->name('home.')->group(function(){
 });
 
 Route::prefix('/user')->name('user.')->group(function(){
+    Route::post('/upDate', 'UserController@userUpdate')->name('userUpdate');
     Route::get('userDiscussions/{userId}', 'DiscussionController@userDiscussions')->name('userDiscussions');
     Route::get('userEditPerfil/{userId}', 'UserController@editPerfil')->name('userEditPerfil');
+    Route::get('userDeletePerfil/{userId}', 'UserController@deletePerfil')->name('userDeletePerfil');
 });
 
 // Rotas das avaliações
