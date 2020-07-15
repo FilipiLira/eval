@@ -10,6 +10,14 @@ body{
     transition: all .2s ease-in-out;
 }
 
+.custom-card{
+    display: flex;
+    flex-direction: column;
+    width: 270px;
+    box-shadow: 0.5px 0.5px 10px rgb(228, 227, 227);
+    border-radius: 0.25rem;
+}
+
 .product-row:hover{
     box-shadow: 2px 1px 10px rgb(212, 211, 211);
 }

@@ -3,33 +3,58 @@
 @section('content')
     <div class="container">
         <h1>Produtos</h1>
-        <div class="d-flex flex-row" id="productsList" totalProducts="{{count($products)}}">
+        <div class="row" id="productsList" totalProducts="{{count($products)}}">
            @if (isset($products))
                 @foreach ($products as $key => $product)
                     
                         @if ($product)
 
-                        <div class="d-flex flex-row product-column" style="background-color: #333">
-                            <div class="p-1 col-2">
-                                <img src="{{route("home.productImg", $product->image)}}" style="height:200px" alt="..." class="img-rounded">
-                            </div>
-                            <div class="p-1 col-8 d-flex flex-column justify-content-around">
-                                <h5>{{$product->name}}</h5>
-                                <div class="d-flex flex-column align-items-center">
-                                    <p class="text-secondary m-0 mr-2">Forum</p>
-                                    <div style="border-left: 1px solid rgb(167, 166, 166)">
-                                    <a href="{{route('discussions', $product->id)}}"class="btn btn-outline-primary ml-3" data-toggle="tooltip" title="Topicos do forum">
-                                            <i class="fa fa-users" aria-hidden="true"></i>
-                                        </a>
-                                        <a href="{{route('newDiscussion', $product->id)}}" class="btn btn-outline-primary ml-3" data-toggle="tooltip" title="Novo Topico do forum">
-                                            <i class="fa fa-plus" aria-hidden="true"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            <div class="col-12 col-sm-6 col-lg-3" style=" min-width: 270px; margin-top: 10px">
 
-                            <div class="d-flex flex-row product-row">
+                                <div class="d-flex flex-column product-column custom-card" style="/*background-color: #333*/">
+                                    <div class="p-1">
+                                        <img src="{{route("home.productImg", $product->image)}}" style="height:200px" alt="..." class="img-rounded">
+                                    </div>
+                                    <div class="p-1 d-flex flex-column justify-content-around">
+                                        <h5>{{$product->name}}</h5>
+                                        <div class="d-flex flex-column">
+                                            @foreach ($evalMeds as $eval)
+                                                @if ($eval['productId'] == $product->id)
+                                                    <div class="d-flex flex-row align-items-center justify-content-between">
+                                                       <a href="{{route('evaluationProduct', $product->id)}}" data-toggle="tooltip" title="Avaliar este Produto">
+                                                           <button class="btn btn-warning btn-sm">
+                                                               Avaliar
+                                                           </button>
+                                                       </a>
+                                                       <div>
+                                                            <div id="avaliation{{$key}}" class="d-flex flex-row align-items-center justify-content-center" avaliation='{{$eval['evalMed']}}'>
+                                                               <i id="star-1" class="fa fa-star star text-warning m-1" style="cursor: pointer; font-size: 1.3rem" aria-hidden="true"></i>
+                                                               <p class="m-1">{{$eval['evalMed']}}</p>
+                                                            </div>
+                                                            <p class="m-0 text-center" style="font-size: 0.8rem">{{$eval['evalQuant']}} avaliações</p>
+                                                       </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                            <div class="d-flex flex-column align-items-start">
+                                                <p class="text-secondary m-0 mr-2">Forum</p>
+                                                <div class="d-flex flex-row justify-content-center">
+                                                    <a href="{{route('discussions', $product->id)}}"class="btn btn-outline-primary" data-toggle="tooltip" title="Topicos do forum">
+                                                        <i class="fa fa-users" aria-hidden="true"></i>
+                                                    </a>
+                                                    <a href="{{route('newDiscussion', $product->id)}}" class="btn btn-outline-primary ml-3" data-toggle="tooltip" title="Novo Topico do forum">
+                                                        <i class="fa fa-plus" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+
+                            </div>
+
+                            {{-- <div class="d-flex flex-row product-row">
 
                                 <div class="p-1 col-2">
                                     <img src="{{route("home.productImg", $product->image)}}" style="height:100px" alt="..." class="img-rounded">
@@ -68,7 +93,7 @@
                                     @endif
                                 @endforeach
 
-                            </div>
+                            </div> --}}
                         @else
 
                             <div class="d-flex flex-row justify-content-center">
@@ -81,7 +106,7 @@
                         @endif
                      
                 @endforeach
-                {{$products->links()}}
+                {{-- {{$products->links()}} --}}
            @endif
         </div>
     </div>

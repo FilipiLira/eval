@@ -6,7 +6,7 @@ use App\Http\Services\CommentRepository;
 class ProductRepository{
     
     public function allProductsEvals($productsParam = null){
-        $products = $productsParam ? $productsParam : \App\Product::paginate(3);
+        $products = $productsParam ? $productsParam : \App\Product::all();
         //$productsPagenate = $products = \App\Product::paginate(2);
 
         $arrayEvaluationProductMed = [];
