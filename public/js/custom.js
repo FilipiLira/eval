@@ -313,6 +313,14 @@ function showlikesUsersNames(){
     })
 }
 
+function submitSearch(){
+    $('.search-btn').on('click', ( ) => {
+        $('#search-form').submit()
+    })
+}
+
+submitSearch()
+
 
 $(document).ready(() => {
     evaluationIndex()

@@ -39,9 +39,17 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
+                    <div class="col-8">
+                        <form id="search-form" action="{{route('search')}}" method="POST">
+                            <div class="search">
+                                   @csrf
+                                   <input class="search-input" type="text" name="search" id="search">
+                                   <span class="search-btn" type="submit">
+                                       <i class="fa fa-search" aria-hidden="true"></i>
+                                   </span>
+                            </div>
+                        </form>
+                    </div>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -95,9 +103,33 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+
+        <div class="row m-0">
+            <div class="col-lg-2 lateral-nav p-0" style="background-color: rgba(235, 41, 41, 0.9)">
+                <div class="d-flex flex-column">
+                   <div class="d-flex flex-row justify-content-center align-content-center mt-2">
+                       <h3>Categorias</h3>
+                   </div>
+                   <ul class="nav-categorys">
+                        <li>
+                           <span>Alimentos</span>
+                        </li>
+                        <li>
+                           <span>Altomóveis</span>
+                        </li>
+                        <li>
+                           <span>Casa mesa e banho</span>
+                        </li>
+                        <li>
+                           <span>Brinquedos</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+             <main class="col-lg-10 p-0 m-0">
+                 @yield('content')
+             </main>
+        </div>
     </div>
     
     <footer class="footer">

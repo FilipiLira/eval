@@ -83,4 +83,17 @@ class ProductController extends Controller
         // die;
         return view('user.userProducts', compact('userProducts'));
     }
+
+    public function search(Request $req, ProductRepository $productsR){
+        // $result = \App\Product::where('name', '%'.$string.'%');
+        
+        $productsSearch = \App\Product::where('name', 'LIKE', '%'.$req->search.'%')->get();
+        $productsAndEvaluationsMed = $productsR->allProductsEvals($productsSearch);
+
+        $products = $productsAndEvaluationsMed["products"];
+        $evalMeds = $productsAndEvaluationsMed["evalMeds"];
+        // dd($evalMeds);
+        // die;
+        return view('index', compact('products', 'evalMeds'));
+    }
 }

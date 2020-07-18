@@ -66,3 +66,5 @@ Route::post('/notificationsUpdate', 'NotificationController@notificationsUpdateA
 
 Route::post('/discussion/createUpPostLike', 'LikeController@createUpdateLikeAjax')->name('postLike');
 Route::get('/discussion/likesPost/{postId}', 'LikeController@likesPostAjax')->name('likesPost');
+
+Route::post('/search', 'ProductController@search')->name('search');
