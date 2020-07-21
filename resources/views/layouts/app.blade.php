@@ -104,25 +104,76 @@
         </nav>
 
 
-        <div class="row m-0">
-            <div class="col-lg-2 lateral-nav p-0" style="background-color: rgba(235, 41, 41, 0.9)">
+        <div class="row m-0 lateral-nav">
+            <div class="col-lg-2 lateral-nav p-0">
                 <div class="d-flex flex-column">
                    <div class="d-flex flex-row justify-content-center align-content-center mt-2">
                        <h3>Categorias</h3>
                    </div>
                    <ul class="nav-categorys">
-                        <li>
+                        <li class="nav-category-item" index="1">
                            <span>Alimentos</span>
+                           <i class="fa fa-angle-right"></i>
+                           <div class="nav-category-item-more" index="1">
+
+                           </div>
                         </li>
-                        <li>
+                        <li class="nav-category-item" index="2">
                            <span>Altomóveis</span>
+                           <i class="fa fa-angle-right"></i>
+                           <div class="nav-category-item-more" index="2">
+
+                           </div>
                         </li>
-                        <li>
+                        <li class="nav-category-item" index="3">
                            <span>Casa mesa e banho</span>
+                           <i class="fa fa-angle-right"></i>
+                           <div class="nav-category-item-more" index="3">
+
+                           </div>
                         </li>
-                        <li>
+                        <li class="nav-category-item" index="4">
                            <span>Brinquedos</span>
+                           <i class="fa fa-angle-right"></i>
+                           <div class="nav-category-item-more" index="4">
+
+                           </div>
                         </li>
+                        <li class="nav-category-item" index="5">
+                            <span>Altomóveis</span>
+                            <i class="fa fa-angle-right"></i>
+                            <div class="nav-category-item-more" index="5">
+
+                            </div>
+                         </li>
+                         <li class="nav-category-item" index="6">
+                            <span>Roupas e acessórios</span>
+                            <i class="fa fa-angle-right"></i>
+                            <div class="nav-category-item-more" index="6">
+
+                            </div>
+                         </li>
+                         <li class="nav-category-item" index="7">
+                            <span>Eletrodomésticos</span>
+                            <i class="fa fa-angle-right"></i>
+                            <div class="nav-category-item-more" index="7">
+
+                            </div>
+                         </li>
+                         <li class="nav-category-item" index="8">
+                            <span>Celulares</span>
+                            <i class="fa fa-angle-right"></i>
+                            <div class="nav-category-item-more" index="8">
+
+                            </div>
+                         </li>
+                         <li class="nav-category-item" index="9">
+                            <span>Informática</span>
+                            <i class="fa fa-angle-right"></i>
+                            <div class="nav-category-item-more" index="9">
+
+                            </div>
+                         </li>
                     </ul>
                 </div>
             </div>

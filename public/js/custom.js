@@ -322,11 +322,68 @@ function submitSearch(){
 submitSearch()
 
 
+function showSubMenu(){
+    $('.nav-category-item').each((i, item) => {
+        
+        $(item).on('mouseover',()=>{
+
+            $('.nav-category-item-more').each((i, elem) => {
+                
+                    let subMenuIndex = $(elem).attr('index')
+                    let categoryIndex =  $(item).attr('index')
+                    if(subMenuIndex == categoryIndex){
+                        $(elem).css('transform', 'translateX(200px)')
+                        console.log(elem)
+                    }
+                
+            })
+        })
+
+        $(item).on('onmouseout',()=>{
+
+            $('.nav-category-item-more').each((i, elem) => {
+                    $(elem).toggleClass('show')
+                
+                    let subMenuIndex = $(elem).attr('index')
+                    let categoryIndex =  $(item).attr('index')
+                    if(subMenuIndex == categoryIndex){
+                        $(elem).css('transform', 'translateX(0px)')
+                        console.log(elem)
+                    }
+                
+            })
+        })
+    })
+}
+
+function closeSubMenu(){
+    $('.nav-category-item').each((i, item) => {
+
+        $(item).on('onmouseout',()=>{
+console.log('test')
+            $('.nav-category-item-more').each((i, elem) => {
+                
+                    let subMenuIndex = $(elem).attr('index')
+                    let categoryIndex =  $(item).attr('index')
+                    if(subMenuIndex == categoryIndex){
+                        $(elem).css('transform', 'translateX(0px)')
+                        console.log(elem)
+                    }
+                
+            })
+        })
+    })
+}
+
+showSubMenu()
+closeSubMenu()
+
 $(document).ready(() => {
     evaluationIndex()
     notifications()
     like()
     showlikesUsersNames()
+    
 
     setTimeout(() => {
         newNotification()
