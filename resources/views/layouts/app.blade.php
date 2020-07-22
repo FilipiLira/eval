@@ -115,63 +115,81 @@
                            <span>Alimentos</span>
                            <i class="fa fa-angle-right"></i>
                            <div class="nav-category-item-more" index="1">
-
+                               <div>
+                                   <p>Alimentos</p>
+                               </div>
                            </div>
                         </li>
                         <li class="nav-category-item" index="2">
                            <span>Altomóveis</span>
                            <i class="fa fa-angle-right"></i>
                            <div class="nav-category-item-more" index="2">
-
+                            <div>
+                                <p>Altomóveis</p>
+                            </div>
                            </div>
                         </li>
                         <li class="nav-category-item" index="3">
                            <span>Casa mesa e banho</span>
                            <i class="fa fa-angle-right"></i>
                            <div class="nav-category-item-more" index="3">
-
+                            <div>
+                                <p>Casa mesa e banho</p>
+                            </div>
                            </div>
                         </li>
                         <li class="nav-category-item" index="4">
                            <span>Brinquedos</span>
                            <i class="fa fa-angle-right"></i>
                            <div class="nav-category-item-more" index="4">
-
+                            <div>
+                                <p>Brinquedos</p>
+                            </div>
                            </div>
                         </li>
                         <li class="nav-category-item" index="5">
-                            <span>Altomóveis</span>
+                            <span>Eletrônicos</span>
                             <i class="fa fa-angle-right"></i>
                             <div class="nav-category-item-more" index="5">
-
+                                <div>
+                                    <p>Eletrônicos</p>
+                                </div>
                             </div>
                          </li>
                          <li class="nav-category-item" index="6">
                             <span>Roupas e acessórios</span>
                             <i class="fa fa-angle-right"></i>
                             <div class="nav-category-item-more" index="6">
-
+                                <div>
+                                    <p>Roupas e acessórios</p>
+                                </div>
                             </div>
                          </li>
                          <li class="nav-category-item" index="7">
                             <span>Eletrodomésticos</span>
                             <i class="fa fa-angle-right"></i>
                             <div class="nav-category-item-more" index="7">
-
+                                <div>
+                                    <p>Eletrodomésticos</p>
+                                </div>
                             </div>
                          </li>
                          <li class="nav-category-item" index="8">
                             <span>Celulares</span>
                             <i class="fa fa-angle-right"></i>
                             <div class="nav-category-item-more" index="8">
-
+                                <div>
+                                    <p>Celulares</p>
+                                </div>
                             </div>
                          </li>
                          <li class="nav-category-item" index="9">
                             <span>Informática</span>
                             <i class="fa fa-angle-right"></i>
                             <div class="nav-category-item-more" index="9">
-
+                                <div>
+                                    <p>Intformática</p>
+                                </div>
                             </div>
                          </li>
                     </ul>

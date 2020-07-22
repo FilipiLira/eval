@@ -267,12 +267,12 @@ function like() {
 
                 success: (data) => {
                     let res = JSON.parse(data)
-                    $('.likeContSpan').each((i, elem)=>{
-                        if($(elem).attr('idPost') == res.postId){
+                    $('.likeContSpan').each((i, elem) => {
+                        if ($(elem).attr('idPost') == res.postId) {
                             $(elem).html(res.likes)
                         }
                     })
-                    console.log( JSON.parse(data))
+                    console.log(JSON.parse(data))
                 }
             })
         })
@@ -292,9 +292,9 @@ function like() {
 //     })
 // }
 
-function showlikesUsersNames(){
-    $('.likeContSpan').each((i, elem)=>{
-        $(elem).mouseenter(()=>{
+function showlikesUsersNames() {
+    $('.likeContSpan').each((i, elem) => {
+        $(elem).mouseenter(() => {
             let father = $(elem).parent()
             let brother = father.children()[1]
             let top = $(brother).height() * 1.2
@@ -303,8 +303,8 @@ function showlikesUsersNames(){
         })
     })
 
-    $('.likeContSpan').each((i, elem)=>{
-        $(elem).mouseleave(()=>{
+    $('.likeContSpan').each((i, elem) => {
+        $(elem).mouseleave(() => {
             let father = $(elem).parent()
             let brother = father.children()[1]
 
@@ -313,8 +313,8 @@ function showlikesUsersNames(){
     })
 }
 
-function submitSearch(){
-    $('.search-btn').on('click', ( ) => {
+function submitSearch() {
+    $('.search-btn').on('click', () => {
         $('#search-form').submit()
     })
 }
@@ -322,68 +322,52 @@ function submitSearch(){
 submitSearch()
 
 
-function showSubMenu(){
+function showSubMenu() {
     $('.nav-category-item').each((i, item) => {
-        
-        $(item).on('mouseover',()=>{
+
+        $(item).mouseenter( (e) => {
+
+            // if(e.target != item){
+            //     return
+            // }
 
             $('.nav-category-item-more').each((i, elem) => {
-                
-                    let subMenuIndex = $(elem).attr('index')
-                    let categoryIndex =  $(item).attr('index')
-                    if(subMenuIndex == categoryIndex){
-                        $(elem).css('transform', 'translateX(200px)')
-                        console.log(elem)
-                    }
-                
+
+                let subMenuIndex = $(elem).attr('index')
+                let categoryIndex = $(item).attr('index')
+                if (subMenuIndex == categoryIndex) {
+                    $(elem).fadeIn(100)
+                    console.log(elem)
+                }
+
             })
         })
 
-        $(item).on('onmouseout',()=>{
+        $(item).mouseleave(() => {
+            console.log('teste')
 
             $('.nav-category-item-more').each((i, elem) => {
-                    $(elem).toggleClass('show')
-                
-                    let subMenuIndex = $(elem).attr('index')
-                    let categoryIndex =  $(item).attr('index')
-                    if(subMenuIndex == categoryIndex){
-                        $(elem).css('transform', 'translateX(0px)')
-                        console.log(elem)
-                    }
-                
-            })
-        })
-    })
-}
 
-function closeSubMenu(){
-    $('.nav-category-item').each((i, item) => {
+                let subMenuIndex = $(elem).attr('index')
+                let categoryIndex = $(item).attr('index')
+                if (subMenuIndex == categoryIndex) {
+                    $(elem).fadeOut(100)
+                    console.log(elem)
+                }
 
-        $(item).on('onmouseout',()=>{
-console.log('test')
-            $('.nav-category-item-more').each((i, elem) => {
-                
-                    let subMenuIndex = $(elem).attr('index')
-                    let categoryIndex =  $(item).attr('index')
-                    if(subMenuIndex == categoryIndex){
-                        $(elem).css('transform', 'translateX(0px)')
-                        console.log(elem)
-                    }
-                
             })
         })
     })
 }
 
 showSubMenu()
-closeSubMenu()
 
 $(document).ready(() => {
     evaluationIndex()
     notifications()
     like()
     showlikesUsersNames()
-    
+
 
     setTimeout(() => {
         newNotification()
